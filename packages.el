@@ -49,16 +49,24 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! envrc)
-(package! lsp-haskell)
+(package! fzf)
+
+(package! windsize)
+
+(package! winum)
+
 (package! lsp-ui)
 
-(package! all-the-icons-dired)
-(package! dired-hide-dotfiles)
-(package! dired-ranger)
+(package! lsp-haskell)
+
+(package! string-inflection)
 
 (package! undo-tree)
-(package! windsize)
-(package! string-inflection)
-(package! winum)
+
 (package! rg)
+
+(package! dired-hide-dotfiles)
+
+(package! dired-ranger)
+
+(package! all-the-icons-dired)
