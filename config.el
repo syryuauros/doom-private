@@ -242,10 +242,6 @@
 
 (use-package! string-inflection)
 
-(use-package! undo-tree
-  :hook (((prog-mode org-mode) . undo-tree-mode))
-)
-
 (mapc (lambda (x) (add-to-list '+lookup-provider-url-alist x))
       (list
         '("Hackage"           "http://hackage.haskell.org/package/%s")

@@ -830,22 +830,6 @@ causes conflict in syncing files between linux and mac.
 
 #+end_src
 
-*** Undo-tree
-
-#+begin_src emacs-lisp :tangle packages.el
-
-(package! undo-tree)
-
-#+end_src
-
-#+begin_src emacs-lisp
-
-(use-package! undo-tree
-  :hook (((prog-mode org-mode) . undo-tree-mode))
-)
-
-#+end_src
-
 ** Search
 *** Additional Lookup Providers
 

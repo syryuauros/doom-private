@@ -61,8 +61,6 @@
 
 (package! string-inflection)
 
-(package! undo-tree)
-
 (package! rg)
 
 (package! dired-hide-dotfiles)
