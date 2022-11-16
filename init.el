@@ -164,6 +164,7 @@
         +jupyter         ; ipython/jupyter support for babel
         +pandoc          ; export-with-pandoc support
         +gnuplot         ; who doesn't like pretty pictures
+        +gnuplot-mode    ; for fully support org-plot/gnuplot
         +pomodoro        ; be fruitful with the tomato technique
         ;;+present       ; using org-mode for presentations
         +roam2)          ; wander around notes
