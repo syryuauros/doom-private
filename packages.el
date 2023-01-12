@@ -71,6 +71,8 @@
 
 ;;https://github.com/org-roam/org-roam-ui#package.el -start-----------------------
 (package! websocket)
+(package! simple-httpd)
+(package! f)
 (unpin! org-roam)
 (package! org-roam-ui)
 ;;https://github.com/org-roam/org-roam-ui#package.el -end-------------------------
