@@ -346,6 +346,12 @@
 (use-package! websocket
     :after org-roam)
 
+(use-package! simple-httpd
+    :after org-roam)
+
+(use-package! f
+    :after org-roam)
+
 (use-package! org-roam-ui
 ;; ;;    :after org-roam ;; or :after org
 ;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
