@@ -4,8 +4,6 @@
 #+startup: fold
 #+property: header-args:emacs-lisp :tangle yes :comments no
 
-;; tangle :: (M-x) org-babel-tangle (C-c C-v t)
-
 **  test!
 * Doom Configuration
 ** Modules
@@ -985,4 +983,3 @@ causes conflict in syncing files between linux and mac.
       )
 
 #+end_src
-'

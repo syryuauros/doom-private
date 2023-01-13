@@ -1,7 +1,7 @@
 (setq user-full-name "syryuauros"
       user-mail-address "sy.ryu@aurostech.com")
 
-(setq default-input-method "korean-hangul3f")
+(setq default-input-method "korean-hangul2")
 
 (setq-default backup-directory-alist '(("" . "~/.backup"))
               make-backup-files t
@@ -19,6 +19,24 @@
 (add-hook 'before-save-hook  'force-backup-of-buffer)
 
 (setq doom-theme 'doom-nova)
+
+(use-package 'doom-nova
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-nova t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 (use-package! face-remap
   :custom-face
@@ -307,6 +325,46 @@
 (use-package! all-the-icons-dired
   :after all-the-icons dired
   :hook (dired-mode . all-the-icons-dired-mode))
+
+;;;;https://github.com/org-roam/org-roam-ui#package.el--230111-start----------------------------------------
+;;(use-package org-roam-ui
+;;  :straight
+;;    (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+;;   :after org-roam
+;;;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;;;         a hookable mode anymore, you're advised to pick something yourself
+;;;;         if you don't care about startup time, use
+;;;;  :hook (after-init . org-roam-ui-mode)
+;;    :config
+;;    (setq org-roam-ui-sync-theme t
+;;          org-roam-ui-follow t
+;;          org-roam-ui-update-on-save t
+;;          org-roam-ui-open-on-start t))
+;;;;https://github.com/org-roam/org-roam-ui#package.el--230111-start----------------------------------------
+
+;;https://github.com/org-roam/org-roam-ui#package.el -start-----------------------------------
+(use-package! websocket
+    :after org-roam)
+
+(use-package! simple-httpd
+    :after org-roam)
+
+(use-package! f
+    :after org-roam)
+
+(use-package! org-roam-ui
+;; ;;    :after org-roam ;; or :after org
+;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;; ;;         a hookable mode anymore, you're advised to pick something yourself
+;; ;;         if you don't care about startup time, use
+;; ;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
+;;https://github.com/org-roam/org-roam-ui#package.el - end-----------------------------------
+
 
 (setq which-key-idle-delay 0.1)
 
