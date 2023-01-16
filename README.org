@@ -824,6 +824,7 @@ causes conflict in syncing files between linux and mac.
 **** org-roam-ui
 #+begin_src emacs-lisp :tangle packages.el
 
+(unpin! org-roam)
 (package! org-roam-ui)
 
 #+end_src
@@ -831,14 +832,14 @@ causes conflict in syncing files between linux and mac.
 #+begin_src emacs-lisp
 
 (use-package! org-roam-ui
-;; ;;    :after org-roam ;; or :after org
+    :after org-roam ;; or :after org
 ;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
 ;; ;;         a hookable mode anymore, you're advised to pick something yourself
 ;; ;;         if you don't care about startup time, use
 ;; ;;  :hook (after-init . org-roam-ui-mode)
     :config
     (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
+          org-roam-ui-follow nil
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 ;;https://github.com/org-roam/org-roam-ui#package.el - end

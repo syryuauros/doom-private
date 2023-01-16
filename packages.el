@@ -69,6 +69,7 @@
 
 (package! f)
 
+(unpin! org-roam)
 (package! org-roam-ui)
 
 (package! sqlite3)
