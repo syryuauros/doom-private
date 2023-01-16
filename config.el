@@ -18,15 +18,15 @@
   (backup-buffer))
 (add-hook 'before-save-hook  'force-backup-of-buffer)
 
-(setq doom-theme 'doom-nova)
+(setq doom-theme 'doom-oceanic-next)
 
-(use-package 'doom-nova
+(use-package 'doom-oceanic-next
   :ensure t
   :config
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-nova t)
+  (load-theme 'doom-oceanic-next t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
