@@ -20,6 +20,24 @@
 
 (setq doom-theme 'doom-nova)
 
+(use-package 'doom-nova
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-nova t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+
 (use-package! face-remap
   :custom-face
   (default ((t (:family "Mononoki Nerd Font Mono"))))
@@ -186,6 +204,50 @@
                   (org-level-8 . 1.0)))
     (set-face-attribute (car face) nil :height (cdr face)))
 )
+
+(use-package! org-roam
+;; ;;    :after org-roam ;; or :after org
+;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;; ;;         a hookable mode anymore, you're advised to pick something yourself
+;; ;;         if you don't care about startup time, use
+;; ;;  :hook (after-init . org-roam-ui-mode)
+    :ensure t
+    :init
+    (setq org-roam-v2-ack t)
+    :custom
+    (org-roam-directory "~/RoamNotes")
+    :bind (("C-c n l" . org-roam-buffer-toggle)
+           ("C-c n f" . org-roam-node-find)
+           ("C-c n i" . org-roam-node-insert))
+    :config
+    (setq org-roam-setup)
+    (setq org-roam-database-connector 'sqlite3))
+;;https://github.com/org-roam/org-roam-ui#package.el - end
+
+(use-package! websocket
+    :after org-roam)
+
+(use-package! simple-httpd
+    :after org-roam)
+
+(use-package! f
+    :after org-roam)
+
+(use-package! org-roam-ui
+;; ;;    :after org-roam ;; or :after org
+;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;; ;;         a hookable mode anymore, you're advised to pick something yourself
+;; ;;         if you don't care about startup time, use
+;; ;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
+;;https://github.com/org-roam/org-roam-ui#package.el - end
+
+(use-package! sqlite3
+    :after org-roam)
 
 (use-package! org
   :custom

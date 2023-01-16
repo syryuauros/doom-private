@@ -51,6 +51,8 @@
 
 (package! fzf)
 
+;;https://github.com/org-roam/org-roam-ui#package.el
+
 (package! windsize)
 
 (package! winum)
@@ -58,6 +60,18 @@
 (package! lsp-ui)
 
 (package! lsp-haskell)
+
+(package! org-roam)
+
+(package! websocket)
+
+(package! simple-httpd)
+
+(package! f)
+
+(package! org-roam-ui)
+
+(package! sqlite3)
 
 (package! string-inflection)
 

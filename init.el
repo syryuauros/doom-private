@@ -164,8 +164,10 @@
         +jupyter         ; ipython/jupyter support for babel
         +pandoc          ; export-with-pandoc support
         +gnuplot         ; who doesn't like pretty pictures
+        +gnuplot-mode    ; for fully support org-plot/gnuplot
         +pomodoro        ; be fruitful with the tomato technique
         ;;+present       ; using org-mode for presentations
+        +roam-ui         ; using roam-ui, needs sqlite3, f, simple-httpd, websocket
         +roam2)          ; wander around notes
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
