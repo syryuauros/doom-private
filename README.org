@@ -283,7 +283,7 @@ ocaml             ; an objective camel
  +pomodoro        ; be fruitful with the tomato technique
  ;;+present       ; using org-mode for presentations
  +roam-ui         ; using roam-ui, needs sqlite3, f, simple-httpd, websocket
- +roam2)          ; wander around notes
+ +roam)          ; wander around notes
 ;;php               ; perl's insecure younger brother
 ;;plantuml          ; diagrams for confusing people more
 purescript        ; javascript, but functional
@@ -832,7 +832,8 @@ causes conflict in syncing files between linux and mac.
 #+begin_src emacs-lisp
 
 (use-package! org-roam-ui
-    :after org-roam ;; or :after org
+    :hook (after-init . org-roam-ui-mode)
+    ;;:after org-roam ;; or :after org
 ;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
 ;; ;;         a hookable mode anymore, you're advised to pick something yourself
 ;; ;;         if you don't care about startup time, use
