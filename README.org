@@ -827,7 +827,8 @@ causes conflict in syncing files between linux and mac.
 **** org-roam-ui
 #+begin_src emacs-lisp :tangle packages.el
 
-(unpin! org-roam company-org-roam)
+;;(unpin! org-roam company-org-roam)
+(unpin! org-roam)
 (package! org-roam-ui)
 
 #+end_src
