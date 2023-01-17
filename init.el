@@ -167,9 +167,8 @@
         +gnuplot-mode    ; for fully support org-plot/gnuplot
         +pomodoro        ; be fruitful with the tomato technique
         ;;+present       ; using org-mode for presentations
-        +journal         ; using org-mode flags
         +roam-ui         ; using roam-ui, needs sqlite3, f, simple-httpd, websocket
-        +roam)          ; wander around notes
+        +roam2)          ; wander around notes
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        purescript        ; javascript, but functional
