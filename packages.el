@@ -69,7 +69,7 @@
 
 (package! f)
 
-(unpin! org-roam)
+(unpin! org-roam company-org-roam)
 (package! org-roam-ui)
 
 (package! sqlite3)

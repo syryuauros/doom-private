@@ -282,6 +282,7 @@ ocaml             ; an objective camel
  +gnuplot-mode    ; for fully support org-plot/gnuplot
  +pomodoro        ; be fruitful with the tomato technique
  ;;+present       ; using org-mode for presentations
+ +journal         ; using org-mode flags
  +roam-ui         ; using roam-ui, needs sqlite3, f, simple-httpd, websocket
  +roam)          ; wander around notes
 ;;php               ; perl's insecure younger brother
@@ -323,8 +324,10 @@ yaml              ; JSON, but readable
 
 #+end_src
 
-** Packages
+** Packages#+begin_verse
 
+
+           #+end_verse
 #+begin_src emacs-lisp :tangle packages.el :comments no
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
@@ -824,7 +827,7 @@ causes conflict in syncing files between linux and mac.
 **** org-roam-ui
 #+begin_src emacs-lisp :tangle packages.el
 
-(unpin! org-roam)
+(unpin! org-roam company-org-roam)
 (package! org-roam-ui)
 
 #+end_src
