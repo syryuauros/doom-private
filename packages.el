@@ -63,16 +63,16 @@
 
 (package! org-roam)
 
-(package! websocket)
+;; (package! websocket)
 
-(package! simple-httpd)
+;; (package! simple-httpd)
 
-(package! f)
+;; (package! f)
 
 (unpin! org-roam)
 (package! org-roam-ui)
 
-(package! sqlite3)
+;; (package! sqlite3)
 
 (package! string-inflection)
 
