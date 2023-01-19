@@ -210,7 +210,8 @@
 (use-package! org-roam
   :ensure t
   :custom
-  (org-roam-directory (file-truename "~/RoamNotes/"))
+  (org-roam-directory (file-truename "https://github.com/syryuauros/Memo/tree/main/RoamNotes"))
+  ;; (org-roam-directory (file-truename "~/gits/Memo/RoamNotes/"))
   (org-roam-completion-everywhere t)
   :bind (("C-c n b" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
