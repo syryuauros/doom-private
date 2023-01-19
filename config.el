@@ -195,7 +195,7 @@
     (advice-add 'org-id-new :filter-return #'upcase)
   )
 
-(defun my/org-header-size()
+  (defun my/org-header-size()
   (dolist (face '((org-level-1 . 1.3)
                   (org-level-2 . 1.2)
                   (org-level-3 . 1.1)
@@ -204,10 +204,10 @@
                   (org-level-6 . 1.0)
                   (org-level-7 . 1.0)
                   (org-level-8 . 1.0)))
-    (set-face-attribute (car face) nil :height (cdr face)))
-)
+  (set-face-attribute (car face) nil :height (cdr face)))
+  )
 
-(use-package org-roam
+(use-package! org-roam
   :ensure t
   :custom
   (org-roam-directory (file-truename "~/RoamNotes/"))
