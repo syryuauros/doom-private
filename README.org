@@ -758,7 +758,7 @@ causes conflict in syncing files between linux and mac.
          ("C-M-i"   . completion-at-point)
          ("C-c n c" . org-roam-capture)
          ;; Dailies
-         ("C-c n j" . org-roam-dailies-capture-today)
+         ("C-c n j" . org-roam-dailies-capture-today))
 
   :config
 ;;   ;; If you're using a vertical completion framework, you might want a more informative completion interface
