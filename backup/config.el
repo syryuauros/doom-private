@@ -1,7 +1,9 @@
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+
 (setq user-full-name "syryuauros"
       user-mail-address "sy.ryu@aurostech.com")
 
-(setq default-input-method "korean-hangul2")
+(setq default-input-method "korean-hangul3f")
 
 (setq-default backup-directory-alist '(("" . "~/.backup"))
               make-backup-files t
@@ -18,25 +20,25 @@
   (backup-buffer))
 (add-hook 'before-save-hook  'force-backup-of-buffer)
 
-(setq doom-theme 'doom-nova)
+(setq doom-theme 'doom-oceanic-next)
 
-(use-package 'doom-nova
-  :ensure t
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-nova t)
+;; (use-package 'doom-oceanic-next
+;;   :ensure t
+;;   :config
+;;   ;; Global settings (defaults)
+;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+;;         doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;;   (load-theme 'doom-oceanic-next t)
 
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+;;   ;; Enable flashing mode-line on errors
+;;   (doom-themes-visual-bell-config)
+;;   ;; Enable custom neotree theme (all-the-icons must be installed!)
+;;   (doom-themes-neotree-config)
+;;   ;; or for treemacs users
+;;   (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+;;   (doom-themes-treemacs-config)
+;;   ;; Corrects (and improves) org-mode's native fontification.
+;;   (doom-themes-org-config))
 
 (use-package! face-remap
   :custom-face
@@ -193,7 +195,7 @@
     (advice-add 'org-id-new :filter-return #'upcase)
   )
 
-(defun my/org-header-size()
+  (defun my/org-header-size()
   (dolist (face '((org-level-1 . 1.3)
                   (org-level-2 . 1.2)
                   (org-level-3 . 1.1)
@@ -202,8 +204,92 @@
                   (org-level-6 . 1.0)
                   (org-level-7 . 1.0)
                   (org-level-8 . 1.0)))
-    (set-face-attribute (car face) nil :height (cdr face)))
-)
+  (set-face-attribute (car face) nil :height (cdr face)))
+  )
+
+(use-package! org-roam
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "~/RoamNotes/"))
+  (org-roam-completion-everywhere t)
+  :bind (("C-c n b" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n a" . org-roam-alias-add)
+         ("C-c n u" . org-roam-ui-open)
+         :map org-mode-map
+         ("C-M-i"   . completion-at-point)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today)
+         ("C-c i" . org-id-get-create))
+
+  :config
+;;   ;; If you're using a vertical completion framework, you might want a more informative completion interface
+;;   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (org-roam-db-autosync-mode))
+;;   ;; If using org-roam-protocol
+;;   (require 'org-roam-protocol))
+
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
+
+;; (use-package! org-roam
+;; ;; ;;    :after org-roam ;; or :after org
+;; ;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;; ;; ;;         a hookable mode anymore, you're advised to pick something yourself
+;; ;; ;;         if you don't care about startup time, use
+;; ;; ;;  :hook (after-init . org-roam-ui-mode)
+;;     :ensure t
+;;     :init
+;;     (setq org-roam-v2-ack t)
+;;     :custom
+;;     (org-roam-directory "~/RoamNotes")
+;;     :bind (("C-c n l" . org-roam-buffer-toggle)
+;;            ("C-c n f" . org-roam-node-find)
+;;            ("C-c n i" . org-roam-node-insert))
+;;     :config
+;;     (setq org-roam-setup)
+;;     (setq org-roam-database-connector 'sqlite3))
+;; ;;https://github.com/org-roam/org-roam-ui#package.el - end
+
+;; (use-package! websocket
+;;     :after org-roam)
+
+;; (use-package! simple-httpd
+;;     :after org-roam)
+
+;; (use-package! f
+;;     :after org-roam)
+
+;; (use-package! org-roam-ui
+;;     :after org-roam ;; or :after org
+;; ;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;; ;; ;;         a hookable mode anymore, you're advised to pick something yourself
+;; ;; ;;         if you don't care about startup time, use
+;; ;; ;;  :hook (after-init . org-roam-ui-mode)
+;;     :config
+;;     (setq org-roam-ui-sync-theme t
+;;           org-roam-ui-follow nil
+;;           org-roam-ui-update-on-save t
+;;           org-roam-ui-open-on-start t))
+;; ;;https://github.com/org-roam/org-roam-ui#package.el - end
+
+;; (use-package! sqlite3
+;;     :after org-roam)
 
 (use-package! org
   :custom
@@ -325,46 +411,6 @@
 (use-package! all-the-icons-dired
   :after all-the-icons dired
   :hook (dired-mode . all-the-icons-dired-mode))
-
-;;;;https://github.com/org-roam/org-roam-ui#package.el--230111-start----------------------------------------
-;;(use-package org-roam-ui
-;;  :straight
-;;    (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-;;   :after org-roam
-;;;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;;;         a hookable mode anymore, you're advised to pick something yourself
-;;;;         if you don't care about startup time, use
-;;;;  :hook (after-init . org-roam-ui-mode)
-;;    :config
-;;    (setq org-roam-ui-sync-theme t
-;;          org-roam-ui-follow t
-;;          org-roam-ui-update-on-save t
-;;          org-roam-ui-open-on-start t))
-;;;;https://github.com/org-roam/org-roam-ui#package.el--230111-start----------------------------------------
-
-;;https://github.com/org-roam/org-roam-ui#package.el -start-----------------------------------
-(use-package! websocket
-    :after org-roam)
-
-(use-package! simple-httpd
-    :after org-roam)
-
-(use-package! f
-    :after org-roam)
-
-(use-package! org-roam-ui
-;; ;;    :after org-roam ;; or :after org
-;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;; ;;         a hookable mode anymore, you're advised to pick something yourself
-;; ;;         if you don't care about startup time, use
-;; ;;  :hook (after-init . org-roam-ui-mode)
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
-;;https://github.com/org-roam/org-roam-ui#package.el - end-----------------------------------
-
 
 (setq which-key-idle-delay 0.1)
 
