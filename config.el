@@ -18,7 +18,7 @@
   (backup-buffer))
 (add-hook 'before-save-hook  'force-backup-of-buffer)
 
-(setq doom-theme 'doom-nova)
+(setq doom-theme 'doom-oceanic-next)
 
 (use-package! face-remap
   :custom-face
