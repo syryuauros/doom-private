@@ -747,12 +747,12 @@ causes conflict in syncing files between linux and mac.
          ("C-c n a" . org-roam-alias-add)
          ("C-c n u" . org-roam-ui-open)
          ("C-c n g" . org-id-get-create)
+         ("C-c n t" . org-roam-tag-add)
          :map org-mode-map
          ("C-M-i"   . completion-at-point)
          ("C-c n c" . org-roam-capture)
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today)
-         ("C-c i" . org-id-get-create))
 
   :config
 ;;   ;; If you're using a vertical completion framework, you might want a more informative completion interface
