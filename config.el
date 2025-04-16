@@ -20,26 +20,16 @@
 
 (setq doom-theme 'doom-oceanic-next)
 
-(use-package! face-remap
-  :custom-face
-  (default ((t (:family "Mononoki Nerd Font Mono"))))
-  (fixed-pitch ((t (:family "Mononoki Nerd Font Mono"))))
-  ;; (variable-pitch ((t (:family "SeoulHangang CB"))))
-  (variable-pitch ((t (:family "Noto Sans CJK KR"))))
-)
-
-;; M-x counsel-fonts for other font options
+(setq doom-font (font-spec :family "Mononoki Nerd Font Mono" :size 22)
+          doom-big-font (font-spec :family "Mononoki Nerd Font Mono" :size 36)
+          doom-variable-pitch-font (font-spec :family "Mononoki Nerd Font Mono" :size 22))
 ;; (use-package! face-remap
 ;;   :custom-face
-;;   (default ((t (:family "SauceCodePro Nerd Font Mono"))))
-;;   (fixed-pitch ((t (:family "SauceCodePro Nerd Font Mono"))))
-;;   (variable-pitch ((t (:family "SauceCodePro Nerd Font"))))
+;;   (default ((t (:family "Mononoki Nerd Font Mono"))))
+;;   (fixed-pitch ((t (:family "Mononoki Nerd Font Mono"))))
+;;   ;; (variable-pitch ((t (:family "SeoulHangang CB"))))
+;;   (variable-pitch ((t (:family "Noto Sans CJK KR"))))
 ;; )
-
-(use-package! mixed-pitch
-  :hook
-  (org-mode . mixed-pitch-mode)
-)
 
 (setq display-line-numbers-type t)
 
@@ -217,17 +207,17 @@
 (use-package! websocket
     :after org-roam)
 
-(use-package! org-roam-ui
-    :after org-roam ;; or :after org
-;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;         a hookable mode anymore, you're advised to pick something yourself
-;;         if you don't care about startup time, use
-;;  :hook (after-init . org-roam-ui-mode)
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
+;; (use-package! org-roam-ui
+;;     :after org-roam ;; or :after org
+;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;; ;;         a hookable mode anymore, you're advised to pick something yourself
+;; ;;         if you don't care about startup time, use
+;; ;;  :hook (after-init . org-roam-ui-mode)
+;;     :config
+;;     (setq org-roam-ui-sync-theme t
+;;           org-roam-ui-follow t
+;;           org-roam-ui-update-on-save t
+;;           org-roam-ui-open-on-start t))
 
 (use-package! org
   :custom
